@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Project</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(to right top,
+            #051937,
+            #004d7a,
+            #008793,
+            #00bf72,
+            #a8eb12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h2{
+            text-align: center; 
+            font-size: 15px;
+            color: white;
+        }
+            
+        
+        button{
+            display: float;
+            margin-left: 4%;
+            border: 5px solid transparent;
+            border-radius: 30px;
+            padding: 10px 40px;
+            font-size: 17px;
+            color: aliceblue;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2);
+            font-family: fira code;
+            font-weight: 700;
+        
+        
+        }
+        button:hover{
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.3),0 17px 50px 0 rgba(0,0,0,0.3);}
+        
+        #myButton{
+            
+            background-color:#3fca2c;
+        
+        
+        }
+        #myButton2{
+            background-color:#004773 ;
+        
+        }
+        .copyCode{ 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.0rem;
+            min-width: 60%;
+            margin: 0 auto;
+            display: block;
+            line-height: 1.4;
+            letter-spacing: 0.2px;
+            border: 3px solid rgba(189,189,189,0.4);
+            background-color: rgba(189,189,189,0.2);
+            padding: 15px 8px 15px 17px;
+            border-radius: 5px;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+            <button id=myButton ">#0519387</button>
+            <button id="myButton2">#008793</button>
+
+    </div><br><br><br>
+    <h2>Tap the box text below to copy the Code </h2>
+    <br>
+    <div class="copyCode">
+        background-image: linear-gradient(to right, #004773,#54d542);
+    </div>
+</section>
+
+<script>
+    let btn1 = document.getElementById("myButton");
+let btn2 = document.getElementById("myButton2");
+let copyDiv = document.querySelector(".copyCode");
+
+
+let rgb1 = "#004773";
+let rgb2 = "#54d542";
+
+const hexvalues = () =>{
+
+        let myHex = "0123456789abcdef";
+        let colors = "#"
+        for(let i =0;i<6;i++){
+            colors = colors + myHex[Math.floor(Math.random()*16)];
+            }
+        return colors;
+        
+} ;
+const handleButton1 = () => {
+    rgb1 = hexvalues();
+    console.log(rgb1);
+    document.body.style.backgroundImage = `linear-gradient(to right,${rgb1},${rgb2})`;
+    copyDiv.innerHTML = `background-image: linear-gradient(to right,${rgb1},${rgb2})`;
+    btn1.innerText = rgb1;
+ 
+    
+};
+
+const handleButton2 = () => {
+    rgb2 = hexvalues();
+    console.log(rgb2);
+    document.body.style.backgroundImage = `linear-gradient(to right,${rgb1},${rgb2})`;
+    copyDiv.innerHTML = `background-image: linear-gradient(to right,${rgb1},${rgb2})`;
+    btn2.innerText = rgb2;
+   
+};
+
+btn1.addEventListener("click" , handleButton1);
+btn2.addEventListener("click" , handleButton2);
+
+//copy the code
+copyDiv.addEventListener("click",()=>{
+    navigator.clipboard.writeText(copyDiv.innerText);
+    alert("Your text has been copied to Clipboard");
+
+});
+
+
+</script>   
+</body>
+</html>
